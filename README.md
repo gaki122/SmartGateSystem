@@ -2,8 +2,6 @@
 
 Smart Gate is a desktop entry and exit management application for Samtse College of Education. It uses a webcam and face recognition to verify registered people and record access events.
 
-> **Presentation note:** The current application is built with Tkinter. It is not a Gradio or Streamlit application. If the assessment requires both frameworks, confirm with your instructor whether the current desktop app meets the requirement or whether separate Gradio and Streamlit demos are expected.
-
 ## Features
 
 - Register students, lecturers, and guests.
