@@ -1862,7 +1862,7 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
         content.bind("<Leave>", lambda _event: canvas.unbind_all("<MouseWheel>"))
 
         inner = tk.Frame(content, bg="#F1F5F9")
-        inner.pack(fill="both", padx=42, pady=26)
+        inner.pack(fill="both", expand=True, padx=42, pady=26)
         campus_banner = tk.Canvas(
             inner, bg=NAVY, height=250, highlightthickness=0, bd=0
         )
@@ -2155,24 +2155,100 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
         )
         mission_copy.pack(anchor="w", fill="x", pady=(8, 0))
 
-        smartgate = tk.Frame(inner, bg=NAVY, padx=20, pady=16)
-        smartgate.pack(fill="x")
+        system_section = card(inner, padx=22, pady=20)
+        system_section.pack(fill="x", pady=(0, 4))
         tk.Label(
-            smartgate, text="SMARTGATE", bg=NAVY, fg="#FACC15", font=F(9, "bold")
+            system_section,
+            text="ABOUT THIS SYSTEM",
+            bg=CARD,
+            fg=PRIMARY,
+            font=F(9, "bold"),
         ).pack(anchor="w")
-        smartgate_copy = tk.Label(
-            smartgate,
+        tk.Label(
+            system_section,
+            text="SCE Smart Gate System",
+            bg=CARD,
+            fg=INK,
+            font=("Georgia", 20, "bold"),
+        ).pack(anchor="w", pady=(4, 0))
+        system_copy = tk.Label(
+            system_section,
             text=(
-                "SmartGate supports campus entry and exit management for authorized "
-                "staff, with face verification and access-record features."
+                "The SCE Smart Gate System helps Samtse College of Education "
+                "manage campus entry and exit. It supports the registration of "
+                "students, lecturers and guests, then uses a webcam and face "
+                "recognition to help authorized staff verify registered people. "
+                "After a successful verification, an entry or exit event is saved "
+                "locally for authorized staff to review. Face recognition supports "
+                "staff decisions; it does not replace human supervision."
             ),
-            bg=NAVY,
-            fg="#E2E8F0",
+            bg=CARD,
+            fg=MUTED,
             font=F(10),
             justify="left",
             wraplength=900,
         )
-        smartgate_copy.pack(anchor="w", fill="x", pady=(5, 0))
+        system_copy.pack(anchor="w", fill="x", pady=(8, 14))
+
+        system_steps = tk.Frame(system_section, bg=CARD)
+        system_steps.pack(fill="x")
+        system_step_cards = []
+        system_step_data = (
+            (
+                "01",
+                "Register",
+                "Add a person's details and capture face data for their profile.",
+                PRIMARY,
+            ),
+            (
+                "02",
+                "Verify",
+                "The camera finds a face and compares it with registered profiles.",
+                GREEN,
+            ),
+            (
+                "03",
+                "Record",
+                "Successful verification creates an entry or exit record.",
+                "#D97706",
+            ),
+        )
+        for index, (number, title, description, accent) in enumerate(
+            system_step_data
+        ):
+            step = tk.Frame(
+                system_steps,
+                bg="#F8FAFC",
+                highlightbackground=BORDER,
+                highlightthickness=1,
+                padx=14,
+                pady=12,
+            )
+            step.grid(
+                row=0,
+                column=index,
+                sticky="nsew",
+                padx=(0, 8) if index < 2 else 0,
+            )
+            tk.Label(
+                step, text=number, bg="#F8FAFC", fg=accent, font=F(8, "bold")
+            ).pack(anchor="w")
+            tk.Label(
+                step, text=title, bg="#F8FAFC", fg=INK, font=F(11, "bold")
+            ).pack(anchor="w", pady=(4, 3))
+            description_label = tk.Label(
+                step,
+                text=description,
+                bg="#F8FAFC",
+                fg=MUTED,
+                font=F(9),
+                justify="left",
+                wraplength=250,
+            )
+            description_label.pack(anchor="w", fill="x")
+            system_step_cards.append(description_label)
+        for index in range(3):
+            system_steps.grid_columnconfigure(index, weight=1, uniform="system_step")
 
         source_link = tk.Label(
             inner,
@@ -2195,21 +2271,26 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
             font=F(8),
         ).pack(pady=(0, 0))
 
-        def update_text_widths(event):
-            width = max(180, event.width - 100)
+        def update_text_widths(_event=None):
+            page_width = max(360, canvas.winfo_width())
+            width = max(180, min(850, page_width - 180))
             intro_copy.config(wraplength=width)
-            smartgate_copy.config(wraplength=width)
-            overview_width = max(150, int((event.width - 84) / 2) - 64)
+            system_copy.config(wraplength=width)
+            system_step_width = max(120, min(280, int((page_width - 240) / 3)))
+            for description in system_step_cards:
+                description.config(wraplength=system_step_width)
+            overview_width = max(150, min(420, int((page_width - 212) / 2)))
             purpose_copy.config(wraplength=overview_width)
             pathway_intro.config(wraplength=overview_width)
             pathway_list.config(wraplength=overview_width)
             programs_copy.config(wraplength=width)
             mission_copy.config(wraplength=width)
-            pillar_width = max(140, int((event.width - 120) / 3) - 38)
+            pillar_width = max(140, min(250, int((page_width - 240) / 3)))
             for detail in pillar_cards:
                 detail.config(wraplength=pillar_width)
 
         content.bind("<Configure>", update_text_widths, add="+")
+        canvas.bind("<Configure>", update_text_widths, add="+")
  
     def show_login(self):
         if self.db.staff_count() == 0:

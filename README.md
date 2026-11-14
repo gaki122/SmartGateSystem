@@ -130,4 +130,10 @@ Check the licenses and attribution requirements of each third-party model and pa
 
 ## Team
 
-Add your group number and all team members' names and contributions here before presenting.
+| Student Name | Student Number |
+| --- | --- |
+| Chimi Wangmo | 08230107 |
+| Dema Lhamo | 08230116 |
+| Lekzin Cheki Wangmo | 08230154 |
+| Rinzin Wangmo | 08230181 |
+| Tshering Choden | 08230220 |
