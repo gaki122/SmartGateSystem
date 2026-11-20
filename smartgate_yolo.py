@@ -18,6 +18,7 @@ Page modules:
 """
 
 # Code
+
 import csv
 import hashlib
 import hmac
@@ -1819,14 +1820,14 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
             text="Samtse College of Education",
             bg=NAVY,
             fg="white",
-            font=("Georgia", 25, "bold"),
+            font=F(24, "bold"),
         ).pack(anchor="center", pady=(0, 5))
         tk.Label(
             hero,
             text="A tradition of teacher education  \u2022  Samtse, Bhutan",
             bg=NAVY,
             fg="#B9D2E8",
-            font=("Georgia", 11, "italic"),
+            font=F(10, "italic"),
         ).pack(anchor="center")
         tk.Frame(hero, bg="#FACC15", height=3).pack(side="bottom", fill="x")
 
@@ -1898,7 +1899,7 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
             width=300,
             text="A place for\nlearning",
             fill="white",
-            font=("Georgia", 24, "bold"),
+            font=F(23, "bold"),
             justify="left",
         )
         banner_caption = campus_banner.create_text(
@@ -1954,14 +1955,14 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
         intro = card(inner, padx=24, pady=20)
         intro.pack(fill="x", pady=(0, 20))
         tk.Label(
-            intro, text="OUR COLLEGE", bg=CARD, fg=PRIMARY, font=F(8, "bold")
+            intro, text="OUR COLLEGE", bg=CARD, fg=INK, font=F(8, "bold")
         ).pack(anchor="w", pady=(0, 5))
         tk.Label(
             intro,
             text="Education that shapes the future",
             bg=CARD,
             fg=INK,
-            font=("Georgia", 20, "bold"),
+            font=F(19, "bold"),
         ).pack(anchor="w")
         intro_copy = tk.Label(
             intro,
@@ -1973,7 +1974,7 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
             ),
             bg=CARD,
             fg=MUTED,
-            font=F(11),
+            font=F(10),
             justify="left",
             wraplength=900,
         )
@@ -1989,7 +1990,7 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
             purpose,
             text="A LEGACY IN TEACHER EDUCATION",
             bg=CARD,
-            fg=PRIMARY,
+            fg=INK,
             font=F(9, "bold"),
         ).pack(anchor="w")
         purpose_copy = tk.Label(
@@ -2001,8 +2002,8 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
                 "more than 5,000 graduates to Bhutan's education system."
             ),
             bg=CARD,
-            fg=INK,
-            font=F(11),
+            fg=MUTED,
+            font=F(10),
             justify="left",
             wraplength=420,
         )
@@ -2014,7 +2015,7 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
             pathways,
             text="VISION",
             bg=CARD,
-            fg=PRIMARY,
+            fg=INK,
             font=F(9, "bold"),
         ).pack(anchor="w")
         pathway_intro = tk.Label(
@@ -2022,7 +2023,7 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
             text="A center of excellence committed to research and innovation in Education.",
             bg=CARD,
             fg=INK,
-            font=("Georgia", 14, "bold"),
+            font=F(13, "bold"),
             justify="left",
             wraplength=420,
         )
@@ -2036,7 +2037,7 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
             ),
             bg=CARD,
             fg=MUTED,
-            font=F(9),
+            font=F(10),
             justify="left",
             wraplength=420,
         )
@@ -2085,7 +2086,7 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
                 anchor="w"
             )
             tk.Label(
-                item, text=title, bg=CARD, fg=INK, font=("Georgia", 13, "bold")
+                item, text=title, bg=CARD, fg=INK, font=F(12, "bold")
             ).pack(anchor="w", pady=(5, 4))
             detail = tk.Label(
                 item,
@@ -2107,7 +2108,7 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
             programs,
             text="ACADEMIC PROGRAMMES & AREAS",
             bg=CARD,
-            fg=PRIMARY,
+            fg=INK,
             font=F(9, "bold"),
         ).pack(anchor="w")
         programs_copy = tk.Label(
@@ -2122,8 +2123,8 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
                 "names, admission requirements and availability."
             ),
             bg=CARD,
-            fg=INK,
-            font=F(11),
+            fg=MUTED,
+            font=F(10),
             justify="left",
             wraplength=900,
         )
@@ -2135,7 +2136,7 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
             mission,
             text="THE COLLEGE'S MISSION",
             bg=CARD,
-            fg=PRIMARY,
+            fg=INK,
             font=F(9, "bold"),
         ).pack(anchor="w")
         mission_copy = tk.Label(
@@ -2148,8 +2149,8 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
                 "innovation in education."
             ),
             bg=CARD,
-            fg=INK,
-            font=F(11),
+            fg=MUTED,
+            font=F(10),
             justify="left",
             wraplength=900,
         )
@@ -2161,7 +2162,7 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
             system_section,
             text="ABOUT THIS SYSTEM",
             bg=CARD,
-            fg=PRIMARY,
+            fg=INK,
             font=F(9, "bold"),
         ).pack(anchor="w")
         tk.Label(
@@ -2169,7 +2170,7 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
             text="SCE Smart Gate System",
             bg=CARD,
             fg=INK,
-            font=("Georgia", 20, "bold"),
+            font=F(19, "bold"),
         ).pack(anchor="w", pady=(4, 0))
         system_copy = tk.Label(
             system_section,
@@ -2241,7 +2242,7 @@ class App(tk.Tk, DashboardMixin, RegistrationMixin, UserManagementMixin):
                 text=description,
                 bg="#F8FAFC",
                 fg=MUTED,
-                font=F(9),
+                font=F(10),
                 justify="left",
                 wraplength=250,
             )
